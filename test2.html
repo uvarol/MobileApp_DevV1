@@ -1,0 +1,41 @@
+<html>
+<head>
+	<title>Test App</title>
+    <script src="js/jquery-3.1.1.min.js"></script>
+</head>	
+<body>
+	test <br/>
+	<input value="123" id="test1_"/> <br/>
+	<select id="test2_"></select> <br/>
+	<a href="index.html"><img src="img/cep_telefonu_1.jpg"></a>
+	
+    <script>	
+		$(document).ready(function(){
+			$("#inputForm").submit(function(event){
+				$(":text").each(function() {
+					var inputText = $(this).val();
+					var userList = [];
+					var weblink = 'https://apex.kiraca.com.tr/ords/ohm/emp_list/1,1,1';
+
+					// problem is from here.
+					$.ajax({
+						url:        weblink,
+						dataType:   "jsonp", // <== JSON-P request
+						success:    function(data){
+							var item1 = data.items[0].ename;	 
+							document.getElementById("test1_").value=item1;
+							var selectList = document.getElementById("test2_");
+							for (var i = 0; i < data.items.length; i++) {
+								var option = document.createElement("option");
+								option.value = data.items[i].ename;
+								option.text = data.items[i].ename + "/" + data.items[i].job;
+								selectList.appendChild(option);
+							}			 
+						}
+					});
+				});
+			 });
+		});
+	</script>
+</body>
+</html>
