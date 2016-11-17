@@ -4,24 +4,21 @@
     <script src="js/jquery-3.1.1.min.js"></script>
 </head>	
 <body>
-	test <br/>
-	<input value="123" id="test1_"/> <br/>
+	test2 <br/>
+	<input value="test2" id="test1_"/> <br/>
 	<select id="test2_"></select> <br/>
 	<a href="index.html"><img src="img/cep_telefonu_1.jpg"></a>
 	
     <script>	
 		$(document).ready(function(){
-			$("#inputForm").submit(function(event){
-				$(":text").each(function() {
-					var inputText = $(this).val();
-					var userList = [];
 					var weblink = 'https://apex.kiraca.com.tr/ords/ohm/emp_list/1,1,1';
 
 					// problem is from here.
 					$.ajax({
 						url:        weblink,
-						dataType:   "jsonp", // <== JSON-P request
+						//dataType:   "jsonp", // <== JSON-P request
 						success:    function(data){
+							alert();
 							var item1 = data.items[0].ename;	 
 							document.getElementById("test1_").value=item1;
 							var selectList = document.getElementById("test2_");
@@ -33,8 +30,6 @@
 							}			 
 						}
 					});
-				});
-			 });
 		});
 	</script>
 </body>
