@@ -7,7 +7,8 @@
 	test2 <br/>
 	<input value="test2" id="test1_"/> <br/>
 	<select id="test2_"></select> <br/>
-	<a href="index.html"><img src="img/cep_telefonu_1.jpg"></a>
+	<a href="index.html"><img src="img/cep_telefonu_1.jpg"></a> <br/>
+	<a href="test2.html">Refresh</a> <br/>
 	
     <script>	
 		$(document).ready(function(){
@@ -16,7 +17,7 @@
 					// problem is from here.
 					$.ajax({
 						url:        weblink,
-						dataType:   "jsonp", // <== JSON-P request
+						dataType:   "json", // <== JSON-P request
 						success:    function(data){
 							alert();
 							var item1 = data.items[0].ename;	 
