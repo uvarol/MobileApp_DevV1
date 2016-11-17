@@ -1,5 +1,27 @@
 <html>
+<head>
+	<title>Test App</title>
+    <script src="js/jquery-3.1.1.min.js"></script>
+</head>	
 <body>
+	<input value="123" id="test1_"/> <br/>
+	<select id="test2_"></select> <br/>
 	<img src="img/cep_telefonu_1.jpg">
+	
+    <script>	
+		$.getJSON("https://apex.kiraca.com.tr/ords/ohm/emp_list/",
+		    function(data) {
+				//var emp = {"next":{"$ref":"https://apex.kiraca.com.tr/ords/ohm/emp_list/?page=1"},"items":[{"ename":"KING","job":"PRESIDENT"},{"ename":"BLAKE","job":"MANAGER"},{"ename":"CLARK","job":"MANAGER"},{"ename":"JONES","job":"MANAGER"},{"ename":"SCOTT","job":"ANALYST"},{"ename":"FORD","job":"ANALYST"},{"ename":"SMITH","job":"CLERK"},{"ename":"ALLEN","job":"SALESMAN"},{"ename":"WARD","job":"SALESMAN"},{"ename":"MARTIN","job":"SALESMAN"},{"ename":"TURNER","job":"SALESMAN"},{"ename":"ADAMS","job":"CLERK"},{"ename":"JAMES","job":"CLERK"},{"ename":"MILLER","job":"CLERK"}]}
+				var item1 = data.items[0].ename;	 
+				document.getElementById("test1_").value=item1;
+				var selectList = document.getElementById("test2_");
+				for (var i = 0; i < data.items.length; i++) {
+					var option = document.createElement("option");
+					option.value = data.items[i].ename;
+					option.text = data.items[i].ename + "/" + data.items[i].job;
+					selectList.appendChild(option);
+				}			 
+		    });  
+	</script>
 </body>
 </html>
