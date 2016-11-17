@@ -1,13 +1,15 @@
 <html>
 <head>
 	<title>Test App</title>
+	<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; connect-src http://www.reddit.com">
     <script src="js/jquery-3.1.1.min.js"></script>
 </head>	
 <body>
 	index <br/>
 	<input value="index123" id="test1_"/> <br/>
 	<select id="test2_"></select> <br/>
-	<a href="test2.html"><img src="img/cep_telefonu_1.jpg"></a>
+	<a href="test2.html">test1</a> <br/>
+	<a href="test2.html">test2</a> <br/>
 	
     <script>	
 		$.getJSON("https://apex.kiraca.com.tr/ords/ohm/emp_list/1,1,1?callback=parseResponse",
