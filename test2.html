@@ -11,15 +11,22 @@
 	<a href="test2.html">Refresh</a> <br/>
 	
     <script>	
+		var photos = function (data) {
+		 alert(data);
+		};	
+
 		$(document).ready(function(){
 					var weblink = 'https://apex.kiraca.com.tr/ords/ohm/emp_list/1,1,1';
+					//var weblink = 'http://www.fazfaz.com/testjson.json?callback=photos';
 
 					// problem is from here.
 					$.ajax({
 						url:        weblink,
-						dataType:   "json", // <== JSON-P request
-						success:    function(data){
-							alert();
+						//dataType:   "jsonp", // <== JSON-P request
+						//jsonCallback: 'photos',
+						//jsonp: false
+						dataType:   "json",
+						success: function (data) {
 							var item1 = data.items[0].ename;	 
 							document.getElementById("test1_").value=item1;
 							var selectList = document.getElementById("test2_");
@@ -32,6 +39,18 @@
 						}
 					});
 		});
+		
+		function parseResponse(data) {
+			var item1 = data.items[0].ename;	 
+			document.getElementById("test1_").value=item1;
+			var selectList = document.getElementById("test2_");
+			for (var i = 0; i < data.items.length; i++) {
+				var option = document.createElement("option");
+				option.value = data.items[i].ename;
+				option.text = data.items[i].ename + "/" + data.items[i].job;
+				selectList.appendChild(option);
+			}			 
+		}					
 	</script>
 </body>
 </html>

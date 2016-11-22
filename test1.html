@@ -10,11 +10,11 @@
 	<a href="index.html"><img src="img/cep_telefonu_1.jpg"></a> <br/>
 	<a href="test1.html">Refresh</a> <br/>
 
-	<script type="application/javascript"
-			src="https://apex.kiraca.com.tr/ords/ohm/emp_list/1,1,1?callback=parseResponse">
-	</script>
+	<div id="uv"></div>
 	
     <script>	
+	    alert(document.getElementById("test1_"));
+		
 		function parseResponse(data) {
 			var item1 = data.items[0].ename;	 
 			document.getElementById("test1_").value=item1;
@@ -26,6 +26,10 @@
 				selectList.appendChild(option);
 			}			 
 		}
+		
+		$( "#uv" ).load( "https://apex.kiraca.com.tr/ords/ohm/emp_list/1,1,1", function() {
+		  alert( "Load was performed." );
+		});		
 	</script>
 </body>
 </html>

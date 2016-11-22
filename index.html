@@ -1,7 +1,7 @@
 <html>
 <head>
 	<title>Test App</title>
-	<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; connect-src http://www.reddit.com">
+	<!--meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; connect-src http://www.reddit.com"-->
     <script src="js/jquery-3.1.1.min.js"></script>
 </head>	
 <body>
@@ -13,6 +13,7 @@
 	
     <script>	
 		$.getJSON("https://apex.kiraca.com.tr/ords/ohm/emp_list/1,1,1?callback=parseResponse",
+		//$.getJSON("http://www.fazfaz.com/testjson.json?callback=parseResponse",
 		    function(data) {
 				//var emp = {"next":{"$ref":"https://apex.kiraca.com.tr/ords/ohm/emp_list/?page=1"},"items":[{"ename":"KING","job":"PRESIDENT"},{"ename":"BLAKE","job":"MANAGER"},{"ename":"CLARK","job":"MANAGER"},{"ename":"JONES","job":"MANAGER"},{"ename":"SCOTT","job":"ANALYST"},{"ename":"FORD","job":"ANALYST"},{"ename":"SMITH","job":"CLERK"},{"ename":"ALLEN","job":"SALESMAN"},{"ename":"WARD","job":"SALESMAN"},{"ename":"MARTIN","job":"SALESMAN"},{"ename":"TURNER","job":"SALESMAN"},{"ename":"ADAMS","job":"CLERK"},{"ename":"JAMES","job":"CLERK"},{"ename":"MILLER","job":"CLERK"}]}
 				var item1 = data.items[0].ename;	 
@@ -25,6 +26,7 @@
 					selectList.appendChild(option);
 				}			 
 		    });  
+						
 	</script>
 </body>
 </html>
