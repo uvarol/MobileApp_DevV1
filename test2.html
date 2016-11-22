@@ -16,10 +16,21 @@
 		 alert(data);
 		};	
 
+		$(document).ajaxError(function(event, request, settings, thrownError ) {
+			alert("Error accessing the server" );
+		});	
+		
 		$(document).ready(function(){
 					var weblink = 'https://apex.kiraca.com.tr/ords/ohm/emp_list/1,1,1';
 					//var weblink = 'http://www.fazfaz.com/testjson.json?callback=photos';
 
+					$.ajaxSetup({
+						beforeSend: function(xhr) {
+							xhr.setRequestHeader("Authorization","Negotiate");
+							xhr.setRequestHeader("Access-Control-Allow-Origin","*"); 
+						}
+					});					
+					
 					// problem is from here.
 					$.ajax({
 						url:        weblink,
