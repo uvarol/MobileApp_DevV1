@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns     = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "org.coenraets.employeedirectory"
+        versionCode="10"
+        version   = "1.1.0">
+
+    <!-- versionCode is optional and Android only -->
+
+    <name>Employee Directory</name>
+
+    <description>
+        A simple employee directory application
+    </description>
+
+    <author href="Genel Profilhttps://tr.linkedin.com/in/umitvarol" email="uvarol@gmail.com">
+        Ümit Varol
+    </author>
+
+	<access origin="https://apex.kiraca.com.tr" subdomains="true"></access>
+	
+</widget>
