@@ -1,0 +1,66 @@
+<html>
+<head>
+	<title>Test App</title>
+	<script src="phonegap.js"></script>
+    <script src="js/jquery-3.1.1.min.js"></script>
+</head>	
+<body>
+	test3 <br/>
+	<input value="test3" id="test1_"/> <br/>
+	<select id="test2_"></select> <br/>
+	<a href="index.html"><img src="img/cep_telefonu_1.jpg"></a> <br/>
+	<a href="test3.html">Refresh</a> <br/>
+	
+    <script>	
+		var photos = function (data) {
+		 alert(data);
+		};	
+
+		$(document).ajaxError(function(event, request, settings, thrownError ) {
+			alert("Error accessing the server" );
+		});	
+		
+		$(document).ready(function(){
+					var weblink = 'https://apex.kiraca.com.tr/ords/ohm/emp_list/1,1,1';
+
+					$.ajaxSetup({
+						beforeSend: function(xhr) {
+							xhr.setRequestHeader("Access-Control-Allow-Origin","*"); 
+						}
+					});					
+					
+					$.ajax({
+						url: weblink + '?callback=?',
+						dataType: 'JSONP',
+						jsonpCallback: 'callbackFnc',
+						type: 'GET',
+						//async: false,
+						//crossDomain: true,
+						success: function () { console.log('Status:SUCCESS'); },
+						failure: function () { onsole.log('Status:FAIL'); },
+						complete: function (data) {
+						    console.log('Status:COMPLETE');
+							if (data.readyState == '4' && data.status == '200') {
+								console.log('Status:COMPLETE,SUCCESS');
+							}
+							else {
+								console.log('Status:COMPLETE,FAIL');
+							}
+						}
+					});
+		});
+		
+		function callbackFnc(data) {
+			var item1 = data.items[0].ename;	 
+			document.getElementById("test1_").value=item1;
+			var selectList = document.getElementById("test2_");
+			for (var i = 0; i < data.items.length; i++) {
+				var option = document.createElement("option");
+				option.value = data.items[i].ename;
+				option.text = data.items[i].ename + "/" + data.items[i].job;
+				selectList.appendChild(option);
+			}			 
+		}					
+	</script>
+</body>
+</html>
